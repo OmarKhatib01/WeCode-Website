@@ -12,12 +12,35 @@ def homepage():
 	return render_template('home.html')
 
 # TODO: route to /list
+@app.route('/list')
+def listt():
+	pass
+	usersTable = db["users"]
+	allusers = list (usersTable.all())
+	return render_template ("list.html" , allusers=allusers )
+	
+
 
 # TODO: route to /feed
 
 # TODO: route to /register
 
 # TODO: route to /error
+@app.route('/error', methods=["GET", "POST"])
+def error():
+	# form =request.form
+	# firstname=["firstname"]
+	# lastname=["lastname"]
+	# username=["username"]
+	# email=["email"]
+	# hometown=["hometown"] 
+	# usersTable = db["users"]
+	# entry = {"firstname":firstname , "lastname":lastname , "username":username , "email":email , "hometown":hometown}
+	# usersTable.insert(entry)
+	# print {{list(usersTable.all())}}
+	# return render_template ("error.html" , firstname=firstname , lastname=lastname , username=username , email=email , hometown=hometown )
+	
+            
 
 if __name__ == "__main__":
     app.run(port=3000)
