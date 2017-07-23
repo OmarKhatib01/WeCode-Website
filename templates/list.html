@@ -6,4 +6,82 @@
 
 <!-- TODO: implement list page -->
 
+	<!-- <li> {{users}} </li> -->
+	<!-- <li> person.{{firstname}}<li>
+	<li> person.{{lastname}} <li>
+	<li> person.{{username}} <li>
+	<li> person.{{hometown}} <li>
+	<li> person.{{email}} <li>
+	<li> person.{{personalsite}}</li> -->
+
+
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+table#t01 {
+    width: 100%;    
+    background-color: #f1f1c1;
+}
+</style>
+
+
+<table style="width:100px;">
+
+
+<tr>	
+	<td>First name</td>
+	<td>last name</td>
+	<td>user name</td>
+	<td>email</td>
+	<td>personal site</td>
+</tr>
+{% for person in allusers %}
+
+
+	
+
+
+<tr>
+
+<td> {{person.firstname}} </td> 
+<td> {{person.lastname}} </td> 
+<td> {{person.username}} </td> 
+<td> {{person.email}} </td> 
+<td> {{person.personalsite}} </td> 
+
+
+</tr>
+
+
+
+
+
+
+
+
+	<!-- <tr>
+		<td>First name</td>
+		<th></th>
+		<td> {{person.firstname}} </td> 
+		<th>last name</th>
+		<td> {{person.lastname}} </td>
+		<th> username</th>
+		<td> {{person.username}} </td>
+		<th>home town</th>
+		<td> {{person.hometown}} </td>
+		<th>email</th>
+		<td> {{person.email}} </td>
+		<th>personlsite</th>
+		<td> {{person.personalsite}} </td>
+	</tr> -->
+
+	
+	{% endfor %}
+	</table>
 {% endblock %}
