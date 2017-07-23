@@ -1,8 +1,25 @@
 {% extends "base.html" %}
-
 {% block body %}
 <h1>Register Page</h1>
-
 <!-- TODO: implement register page -->
+<form action = "/register" method="POST">
+	First Name: <br>
+	<input type="text" name = "firstname" required> <br>
+	Last Name: <br>
+	<input type="text" name="lastname" required><br>
+	Username: <br>
+	<input type="text" name="username" required><br>
+	Email: <br>
+	<input type = "text" name = "email" type ="email" required><br>
+	Hometown: <br>
+	<input type = "text" name = "hometown" required><br>
+	Personal Website Link: <br>
+	<input type = "text" name = "personalwebsite" ><br>
 
+	<input id="button" type="submit" value="register">
+</form>
+
+{% if taken == 1 %}
+<h1> The Username is taken </h1>
+{% endif %}
 {% endblock %}
