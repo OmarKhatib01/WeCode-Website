@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% block body %}
 <h1>Register Page</h1>
 <!-- TODO: implement register page -->
@@ -20,5 +19,7 @@
 	<input id="button" type="submit" value="register">
 </form>
 
-
+{% if taken == 1 %}
+<h1> The Username is taken </h1>
+{% endif %}
 {% endblock %}

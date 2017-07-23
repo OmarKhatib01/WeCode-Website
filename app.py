@@ -23,22 +23,27 @@ def regist():
 		return render_template ("register.html")
 	else:
 		form = request.form
+		usersTable = db["users"]
 		firstname = form["firstname"]
 		lastname = form["lastname"]
 		username= form["username"]
 		email = form["email"]
 		hometown = form["hometown"]
 		personalwebsite = form["personalwebsite"]
-		usersTable = db["users"]
 		entry = {"firstname":firstname , "lastname":lastname, "username":username , "email":email , "hometown":hometown , "personalwebsite":personalwebsite}
-		usersTable.insert(entry)
-		return render_template("register.html", firstname = firstname, email = email, hometown = hometown, lastname = lastname, personalwebsite = personalwebsite)
-		usersTable = db["users"]
-		nameToCheck = "username"
-		results = list(users.find(username = nameToCheck))
+		nameToCheck = username
+		results = list(usersTable.find(username = nameToCheck))
 		print len(results)
+		if len(results) == 0:
+			taken = 0 
+			usersTable.insert(entry)
+			return render_template("home.html", firstname = firstname, email = email, hometown = hometown, lastname = lastname, personalwebsite = personalwebsite)
+		else:
+			taken = 1
+			return render_template ("register.html", taken = taken)
 
 # TODO: route to /error
+# @app.route('/error')
 
 if __name__ == "__main__":
     app.run(port=3000)
