@@ -22,4 +22,11 @@ li a {
 li a:hover {
   background-color: #111;
 }
+ .img{
+  margin-left: 30px;
+ }
 
+.background{
+  background-image: url(http://apexassisting.com/wp-content/uploads/2013/11/light-gray-textured-solid.jpg);
+
+}
