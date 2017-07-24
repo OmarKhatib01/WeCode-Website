@@ -24,6 +24,9 @@ def listt():
 
 
 # TODO: route to /feed
+@app.route('/feed')
+def newsFeed():
+	return render_template("feed.html")
 
 # TODO: route to /register
 @app.route('/register', methods=["GET", "POST"])
@@ -46,7 +49,8 @@ def regist():
 		if len(results) == 0:
 			taken = 0 
 			usersTable.insert(entry)
-			return render_template("home.html", firstname = firstname, email = email, hometown = hometown, lastname = lastname, personalwebsite = personalwebsite)
+			return redirect("/home")
+			# TURN INTO LIST WHEN IT IS DONE
 		else:
 			taken = 1
 			return render_template ("register.html", taken = taken)
