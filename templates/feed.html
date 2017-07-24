@@ -4,12 +4,19 @@
 
 <h1>Feed Page</h1>
 <form action = "/feed" method="POST">
+	Username:<br>
 	<input type="text" name="username" placeholder="Enter your Username" required><br>
-	<input type = "text" name = "post" placeholder="post"><br>
+	What Do you Have in Mind?<br>
+	<textarea type = "text" name = "post" placeholder="text"></textarea><br>
 
-	<input id="button" type="submit" value="register">
+	<input id="button" type="submit" value="POST">
 </form>
+{% for post in allposts %}
+<h2>{{post.username}}</h2>
+<h4> {{post.post}}</h4>
+<p> {{post.time_string}}</p>
 
+{% endfor %}
 <!-- TODO: implement feed page -->
 
 {% endblock %}

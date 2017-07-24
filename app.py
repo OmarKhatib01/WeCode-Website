@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
+import time
 import dataset
 
 app = Flask(__name__)
@@ -24,10 +25,21 @@ def listt():
 
 
 # TODO: route to /feed
-@app.route('/feed')
+@app.route('/feed', methods= ["GET","POST"])
 def newsFeed():
-	return render_template("feed.html")
-
+	posts=db["posts"]
+	allposts = list(posts.all())[::-1]
+	if request.method == "GET":
+		return render_template("feed.html", allposts=allposts)
+	else:
+		form=request.form
+		username=form["username"]
+		post=form["post"]
+		time_string = time.strftime('%l:%M on %b %d, %Y')
+		entry = {"username":username, "post": post, "time_string" : time_string}
+		posts.insert(entry)
+		allposts = list(posts.all())[::-1]
+		return render_template("feed.html", allposts=allposts)
 # TODO: route to /register
 @app.route('/register', methods=["GET", "POST"])
 def regist():
@@ -54,25 +66,6 @@ def regist():
 		else:
 			taken = 1
 			return render_template ("register.html", taken = taken)
-
-# TODO: route to /error
-# @app.route('/error', methods=["GET", "POST"])
-# def error():
-# 	# form =request.form
-	# firstname=["firstname"]
-	# lastname=["lastname"]
-	# username=["username"]
-	# email=["email"]
-	# hometown=["hometown"] 
-	# usersTable = db["users"]
-	# entry = {"firstname":firstname , "lastname":lastname , "username":username , "email":email , "hometown":hometown}
-	# usersTable.insert(entry)
-	# print {{list(usersTable.all())}}
-	# return render_template ("error.html" , firstname=firstname , lastname=lastname , username=username , email=email , hometown=hometown )
-	
-            
-
-# @app.route('/error')
 
 
 if __name__ == "__main__":
