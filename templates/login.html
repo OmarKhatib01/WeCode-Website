@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block body %}
+<form action = "/login" method="POST">
+	Username:<br>
+	<input type="text" name="username" placeholder="Enter your Username" required><br>
+	Password:<br>
+	<input type = "password" name = "password" placeholder="password"></input><br>
+	<input id="button" type="submit" value="POST">
+</form>
+{% if login == 0 %}
+<h3>The username or password is wrong or you have no account<a href="/register">click here to register</a></h3>
+
+{% endif %}
+
+{% endblock %}

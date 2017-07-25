@@ -1,4 +1,4 @@
-
+/*BASE CSS*/
 ul {
   list-style-type: none;
   margin: 0;
@@ -6,7 +6,11 @@ ul {
   overflow: hidden;
   background-color: #333333;
 }
+body {
+margin-left: 0px;
+margin-right: 0px;
 
+}
 li {
   float: left;
 }
@@ -25,4 +29,11 @@ li a:hover {
  .img{
   margin-left: 30px;
  }
+
+
+.background{
+  background-color: #ffd896;
+
+}
+
 
