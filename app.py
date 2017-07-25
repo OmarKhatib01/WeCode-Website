@@ -17,7 +17,7 @@ def homepage():
 def listt():
 	
 	usersTable = db["users"]
-	allusers = list (usersTable.all())
+	allusers = list (usersTable.all())[::-1]
 	
 	return render_template ("list.html" , allusers=allusers )
 	

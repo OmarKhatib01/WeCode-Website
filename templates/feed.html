@@ -9,12 +9,59 @@
 
 	<input id="button" type="submit" value="POST">
 </form>
-{% for post in allposts %}
+<!-- {% for post in allposts %}
 <h2>{{post.username}}</h2>
 <h4> {{post.post}}</h4>
 <p> {{post.time_string}}</p>
 
-{% endfor %}
+{% endfor %} -->
 <!-- TODO: implement feed page -->
+
+
+
+<style type="text/css">
+.container {
+  border: 2px solid #ccc;
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 16px;
+  margin: 16px 0
+}
+
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.container img {
+  float: left;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.container span {
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+@media (max-width: 500px) {
+  .container {
+      text-align: center;
+  }
+  .container img {
+      margin: auto;
+      float: none;
+      display: block;
+  }
+</style>
+
+{% for post in allposts %}
+<div class="container">
+  <img src="../static/images/img_avatar3.png" alt="Avatar" style="width:90px">
+  <p><span>{{post.username}}</span> {{post.time_string}} </p>
+  <p>{{post.post}}</p>
+</div>
+{% endfor %}
 
 {% endblock %}
