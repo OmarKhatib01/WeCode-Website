@@ -4,8 +4,10 @@
 
 <h1>List Page</h1>
 
-<!-- TODO: implement list page -->
 
+
+<!-- TODO: implement list page -->
+<!-- 
 <style>
 table, th, td {
     border: 1px solid black;
@@ -40,5 +42,48 @@ table#t01 {
 <td> {{person.personalsite}} </td> 
 </tr>
 {% endfor %}
-	</table>
+	</table> -->
+
+
+
+
+
+
+<style>
+.card {
+    background-color: grey;
+    box-shadow: 10px 10px 5px #888888;
+    box-shadow: 0 4px 8px 0 rgba(15px, 22px, 41px, #888888);
+    transition : 0.3s;
+    width: 250px;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+    padding: 2px 16px;
+}
+</style>
+
+<li>
+ {% for users in allusers %}
+
+<div class="card">
+<center><img src="../static/images/img_avatar3.png" alt="Avatar" style="border-radius: 50px; width: 60%;"></center>
+  <div class="container">
+    
+    <h4 style="text-align: center;"><b> {{users.username}} </b></h4>
+    <h4 style="text-align: center;"><b> {{users.firstname}} {{users.lastname}} </b></h4>
+    <h4 style="text-align: center;"><b> {{users.email}} </b></h4>
+    <a href= "{{users.personalwebsite}}">click me</a>
+   
+  </div>
+</div>
+<br>
+{% endfor %}
+</li>
+
+
 {% endblock %}
