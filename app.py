@@ -1,12 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 import time
 import dataset
 
 app = Flask(__name__)
 # TODO: connect your database here
 db = dataset.connect("postgres://ddwbsshctrcopd:5873de1bae81aa8dd1c1680475d0f7a1674dd3ceb057f0c285c81179783333e7@ec2-174-129-224-33.compute-1.amazonaws.com:5432/d32641cd2da4vv")
-
-
+app.secret_key = 'iq873g'
 
 
 @app.route('/home')
@@ -29,17 +28,21 @@ def listt():
 def newsFeed():
 	posts=db["posts"]
 	allposts = list(posts.all())[::-1]
-	if request.method == "GET":
-		return render_template("feed.html", allposts=allposts)
+	
+	if "username" in session:
+		if request.method == "GET":
+			return render_template("feed.html", allposts=allposts)
+		else:
+			form=request.form
+			username = session['username']
+			post=form["post"]
+			time_string = time.strftime('%l:%M on %b %d, %Y')
+			entry = {"username":username, "post": post, "time_string" : time_string}
+			posts.insert(entry)
+			allposts = list(posts.all())[::-1]
+			return render_template("feed.html", allposts=allposts)
 	else:
-		form=request.form
-		username=form["username"]
-		post=form["post"]
-		time_string = time.strftime('%l:%M on %b %d, %Y')
-		entry = {"username":username, "post": post, "time_string" : time_string}
-		posts.insert(entry)
-		allposts = list(posts.all())[::-1]
-		return render_template("feed.html", allposts=allposts)
+		return "You are  not logged in, please login"
 # TODO: route to /register
 @app.route('/register', methods=["GET", "POST"])
 def regist():
@@ -59,6 +62,7 @@ def regist():
 		results = list(usersTable.find(username = nameToCheck))
 		print len(results)
 		if len(results) == 0:
+			session["username"] = username
 			taken = 0 
 			usersTable.insert(entry)
 			return redirect("/home")
@@ -66,6 +70,37 @@ def regist():
 		else:
 			taken = 1
 			return render_template ("register.html", taken = taken)
+
+
+@app.route('/login', methods = ["get" , "post"])
+def login():
+	if request.method == "GET":
+		return render_template ("login.html")
+	else:
+
+		usersTable = db["users"]
+		form = request.form
+		username= form["username"]
+		password= form["password"]
+		nameToCheck = username
+		passwordToCheck=password
+		results = len(list(usersTable.find(username = nameToCheck, password=password)))
+		if results > 0:
+			login=1
+			username = request.form["username"]
+			session["username"] = username
+			print('sucessful login')
+			return redirect('/home')
+			return "logged in"
+
+		else:
+			login=0
+			return render_template("login.html" , login=login)
+@app.route('/logout')
+def logout():
+	if 'username' in session:
+	    session.pop('username', None)
+	    return render_template("logout.html")
 
 
 if __name__ == "__main__":

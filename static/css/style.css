@@ -1,4 +1,4 @@
-
+/*BASE CSS*/
 ul {
   list-style-type: none;
   margin: 0;
@@ -6,7 +6,11 @@ ul {
   overflow: hidden;
   background-color: #333333;
 }
+body {
+margin-left: 0px;
+margin-right: 0px;
 
+}
 li {
   float: left;
 }
@@ -27,6 +31,8 @@ li a:hover {
  }
 
 .background{
-  background-image: url(http://apexassisting.com/wp-content/uploads/2013/11/light-gray-textured-solid.jpg);
+  background-color: #ffd896;
 
 }
+
+

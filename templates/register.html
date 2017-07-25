@@ -15,11 +15,13 @@
 	<input type = "text" name = "hometown" placeholder="Enter your Hometown" required><br>
 	Personal Website Link: <br>
 	<input type = "text" name = "personalwebsite" placeholder="Enter the link to your Website"><br>
-
+	Password:<br>
+	<input type = "password" name = "password" placeholder="type password">
 	<input id="button" type="submit" value="register">
 </form>
 
 {% if taken == 1 %}
-<h1> The Username is taken </h1>
+<h1> The Username is taken<a href="/login">click here to login</a></h1>
+
 {% endif %}
 {% endblock %}
