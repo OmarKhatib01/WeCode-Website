@@ -92,7 +92,6 @@ def login():
 			print('sucessful login')
 			return redirect('/home')
 			return "logged in"
-
 		else:
 			login=0
 			return render_template("login.html" , login=login)
