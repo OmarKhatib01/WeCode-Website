@@ -18,6 +18,9 @@ def homepage():
 	return render_template('home.html')
 
 
+@app.route('/contact')
+def con():
+	return render_template ("contact.html")
 
 
 

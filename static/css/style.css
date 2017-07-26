@@ -39,17 +39,30 @@ li a:hover {
 }
 
 #wecodediv{
-  background-color: #ffd896;
-  height: 500px;
+  background-color: #a7f977;
+  height: 280px;
   width: 90%;
   box-shadow: 1px 10px 100px #888888;
 }
 
-<<<<<<< HEAD
-=======
+
 .container{
   margin-top: 100px;
   box-shadow: 1px 10px 100px #888888;
 
 }
->>>>>>> 256a6358197d232ed0d062f937e73ccb1044d9ea
+
+.t{
+  background-color: #a7f977;
+  height:220px;
+  width: 90%;
+  box-shadow: 1px 10px 100px #888888;
+}
+
+.r{
+  background-color: #a7f977;
+  height: 220px;
+  width: 90%;
+  box-shadow: 1px 10px 100px #888888;
+  float: right;
+}

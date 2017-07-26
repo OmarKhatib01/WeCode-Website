@@ -55,7 +55,8 @@ table#t01 {
     box-shadow: 10px 10px 5px #888888;
     box-shadow: 0 4px 8px 0 rgba(15px, 22px, 41px, #888888);
     transition : 0.3s;
-    width: 250px;
+    width: 200px;
+
     float: left;
     margin-left: 30px;
     margin-top: 30px;
@@ -64,10 +65,10 @@ table#t01 {
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
-
+/*
 .container {
     padding: 2px 16px;
-}
+}*/
 
 
 </style>
@@ -76,8 +77,8 @@ table#t01 {
  {% for users in allusers %}
 
 <div class="card">
-<center><img src="../static/images/img_avatar3.png" alt="Avatar" style="border-radius: 50px; width: 60%;"></center>
-  <div class="container">
+<center><img src="../static/images/img_avatar3.png" alt="Avatar" style="border-radius: 50px; width: 70%;"></center>
+  <div>
     
     <h4 style="text-align: center;"><b> {{users.username}} </b></h4>
     <h4 style="text-align: center;"><b> {{users.firstname}} {{users.lastname}} </b></h4>
