@@ -29,9 +29,16 @@
 <center>
     <p> Don't have an account? <a href='/register'> click here to register</a>
 </center>
+<center>
 {% if login == 0 %}
-<h3>The username or password is wrong or you have no account<a href="/register">click here to register</a></h3>
-
+<h3>The username or password is wrong</h3>
 {% endif %}
-
+</center>
+<center>
+	{% if logout %}
+	<h1> You are logged out </h1>
+	{% endif %}
+	{% if viewnewsfeed %}
+	<h1> You cannot view the newsfeed when logged out, login or create and account</h1>
+	{% endif %}
 {% endblock %}
