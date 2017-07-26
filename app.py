@@ -58,8 +58,8 @@ def newsFeed():
 			allposts = list(posts.all())[::-1]
 			return render_template("feed.html", allposts=allposts)
 	else:
-		return "You are  not logged in, please login"
-
+		viewnewsfeed= True
+		return render_template("login.html", viewnewsfeed= viewnewsfeed)
 
 
 
@@ -140,8 +140,9 @@ def login():
 @app.route('/logout')
 def logout():
 	if 'username' in session:
-	    session.pop('username', None)
-	    return render_template("logout.html")
+		logout = True
+		session.pop('username', None)
+		return render_template("login.html", logout=logout)
 
 
 
