@@ -2,13 +2,16 @@
 
 {% block body %}
 
-<h1>Feed Page</h1>
+<!-- <h1>Feed Page</h1>
 <form action = "/feed" method="POST">
 	What Do you Have in Mind?<br>
 	<textarea type = "text" name = "post" placeholder="text"></textarea><br>
 
 	<input id="button" type="submit" value="POST">
-</form>
+</form> -->
+
+
+
 <!-- {% for post in allposts %}
 <h2>{{post.username}}</h2>
 <h4> {{post.post}}</h4>
@@ -54,7 +57,29 @@
       float: none;
       display: block;
   }
+
+  .feeds{
+  	width: 100%;
+  	background-color: lightblue;
+  	text-align: center;
+
+  }
 </style>
+
+<div>
+
+<form action = "/feed" method="POST">
+	What Do you Have in Mind?<br>
+	<textarea style = "width:1000px;background-color: blue;" type = "text" name = "post" placeholder="text"></textarea><br>
+
+	<input id="button" type="submit" value="POST">
+</form>
+
+
+</div>
+
+
+
 
 {% for post in allposts %}
 <div class="container">
