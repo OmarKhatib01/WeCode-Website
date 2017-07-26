@@ -8,19 +8,32 @@ db = dataset.connect("postgres://ddwbsshctrcopd:5873de1bae81aa8dd1c1680475d0f7a1
 app.secret_key = 'iq873g'
 
 
+
+
+@app.route('/')
+def home():
+	return render_template ("home.html")
 @app.route('/home')
 def homepage():
 	return render_template('home.html')
 
+
+
+
+
+
 # TODO: route to /list
 @app.route('/list')
 def listt():
-	
 	usersTable = db["users"]
 	allusers = list (usersTable.all())[::-1]
-	
 	return render_template ("list.html" , allusers=allusers )
 	
+
+
+
+
+
 
 
 # TODO: route to /feed
@@ -43,6 +56,17 @@ def newsFeed():
 			return render_template("feed.html", allposts=allposts)
 	else:
 		return "You are  not logged in, please login"
+
+
+
+
+
+
+
+
+
+
+
 # TODO: route to /register
 @app.route('/register', methods=["GET", "POST"])
 def regist():
@@ -57,7 +81,8 @@ def regist():
 		email = form["email"]
 		hometown = form["hometown"]
 		personalwebsite = form["personalwebsite"]
-		entry = {"firstname":firstname , "lastname":lastname, "username":username , "email":email , "hometown":hometown , "personalwebsite":personalwebsite}
+		password = form["password"]
+		entry = {"firstname":firstname , "lastname":lastname, "username":username , "email":email , "hometown":hometown , "personalwebsite":personalwebsite, "password":password}
 		nameToCheck = username
 		results = list(usersTable.find(username = nameToCheck))
 		print len(results)
@@ -72,6 +97,14 @@ def regist():
 			return render_template ("register.html", taken = taken)
 
 
+
+
+
+
+
+
+
+
 @app.route('/login', methods = ["get" , "post"])
 def login():
 	if request.method == "GET":
@@ -79,27 +112,34 @@ def login():
 	else:
 
 		usersTable = db["users"]
+		print list(usersTable.find(username="omar@1"))
 		form = request.form
 		username= form["username"]
 		password= form["password"]
 		nameToCheck = username
-		passwordToCheck=password
 		results = len(list(usersTable.find(username = nameToCheck, password=password)))
 		if results > 0:
-			login=1
-			username = request.form["username"]
+			login=2
 			session["username"] = username
 			print('sucessful login')
 			return redirect('/home')
-			return "logged in"
 		else:
 			login=0
 			return render_template("login.html" , login=login)
+
+
+
+
+
+
+
+
 @app.route('/logout')
 def logout():
 	if 'username' in session:
 	    session.pop('username', None)
 	    return render_template("logout.html")
+
 
 
 if __name__ == "__main__":
