@@ -32,12 +32,14 @@
 </div>
 {% for post in allposts %}
 <div class="container">
-  <img src="../static/images/img_avatar3.png" alt="Avatar" style="width:90px">
+  <img src="../static/images/index.png" alt="Avatar" style="width:90px">
   <p><span>{{post.username}}</span> </p>
   <p>{{post.post}}</p>
   <p>{{post.time_string}}</span></p>
 </div>
 {% endfor %}
+
+
 <style type="text/css">
 .container {
   border: 2px solid #ccc;
@@ -83,29 +85,13 @@
 </style>
 
 
-<div>
-
-<form action = "/feed" method="POST">
-	What Do you Have in Mind?<br>
-	<textarea style = "width:1000px;background-color: blue;" type = "text" name = "post" placeholder="text"></textarea><br>
-
-	<input id="button" type="submit" value="POST">
-</form>
-
-
-</div>
 
 
 
 
 
-{% for post in allposts %}
-<div class="container">
-  <img src="../static/images/img_avatar3.png" alt="Avatar" style="width:90px">
-  <p><span>{{post.username}}</span> {{post.time_string}} </p>
-  <p>{{post.post}}</p>
-</div>
-{% endfor %}
+
+
 
 
 
