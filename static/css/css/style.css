@@ -7,7 +7,7 @@ body {
   padding: 1em;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 15px;
-  color: black;
+  color: #b9b9b9;
   background-color: #e3e3e3;
 }
 h4 {
@@ -19,7 +19,8 @@ input[type="checkbox"] + label:before,
 select option,
 select {
   width: 100%;
-  line-height: 1.4;
+  padding: 1em;
+  line-height: 2;
   background-color: #f9f9f9;
   border: 1px solid #e5e5e5;
   border-radius: 3px;
@@ -176,7 +177,6 @@ select option {
   background-color: #fff;
   border-radius: 4.2px;
   box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
-  color: black;
 }
 .row {
   zoom: 1;
