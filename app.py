@@ -146,6 +146,8 @@ def logout():
 		logout = True
 		session.pop('username', None)
 		return render_template("login.html", logout=logout)
+	else:
+		return redirect("/home")
 
 
 
