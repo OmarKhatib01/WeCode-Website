@@ -28,10 +28,13 @@ def con():
 # TODO: route to /list
 @app.route('/list')
 def listt():
-	usersTable = db["users"]
-	allusers = list (usersTable.all())[::-1]
-	return render_template ("list.html" , allusers=allusers )
-	
+	if "username" in session:
+		usersTable = db["users"]
+		allusers = list (usersTable.all())[::-1]
+		return render_template ("list.html" , allusers=allusers )
+	else:
+		viewlist= True
+		return render_template("login.html", viewlist= viewlist)
 
 
 
