@@ -13,14 +13,15 @@
 <br>
 <div class="container">
   <form action = "/feed", method= "POST">
-  	
-    <div class="row">  
-    <center><h4>Newsfeed</h4></center>   
+  	<title>Newsfeed</title>
+    <div class="row">     
         <div class="input-group input-group-icon">
         <input name="post" type="text" placeholder="Express Yourself!" required>
         <br>
         <br>
-        <input style="align-text: center;" id="button" type="submit" value="post">
+        <center>
+        <input id="button" type="submit" value="post">
+  		</center>
         <div class="input-icon"><i class="fa fa-pencil-square-o"></i></div>
         </div>
 
@@ -30,14 +31,12 @@
 </div>
 {% for post in allposts %}
 <div class="container">
-  <img src="../static/images/index.png" alt="Avatar" style="width:90px">
+  <img src="../static/images/img_avatar3.png" alt="Avatar" style="width:90px">
   <p><span>{{post.username}}</span> </p>
   <p>{{post.post}}</p>
   <p>{{post.time_string}}</span></p>
 </div>
 {% endfor %}
-
-
 <style type="text/css">
 .container {
   border: 2px solid #ccc;
