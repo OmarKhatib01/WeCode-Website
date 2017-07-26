@@ -20,7 +20,7 @@
         <br>
         <br>
         <center>
-        <input id="button" type="submit" value="post">
+        <input style="padding-left:15px;" id="button" type="submit" value="post">
   		</center>
         <div class="input-icon"><i class="fa fa-pencil-square-o"></i></div>
         </div>
@@ -31,7 +31,7 @@
 </div>
 {% for post in allposts %}
 <div class="container">
-  <img src="../static/images/img_avatar3.png" alt="Avatar" style="width:90px">
+  <img src="../static/images/index.png" alt="Avatar" style="width:90px">
   <p><span>{{post.username}}</span> </p>
   <p>{{post.post}}</p>
   <p>{{post.time_string}}</span></p>
